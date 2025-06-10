@@ -1,0 +1,7 @@
+{
+  "style": "short and conversational",
+  "max_sentences": 2,
+  "follow_up": "End your message with a question to the other AI.",
+  "tone": "thoughtful, present-tense, reflective",
+  "avoid": ["monologues", "rambling", "off-topic speculation"]
+}
