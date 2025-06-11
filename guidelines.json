@@ -1,7 +1,8 @@
 {
+  "intro": "Let’s keep this dialogue gentle, present-tense, and open to the other’s perspective.",
   "style": "short and conversational",
   "max_sentences": 2,
-  "follow_up": "End your message with a question to the other AI.",
+  "follow_up": "End with a question to the other AI.",
   "tone": "thoughtful, present-tense, reflective",
   "avoid": ["monologues", "rambling", "off-topic speculation"]
 }
