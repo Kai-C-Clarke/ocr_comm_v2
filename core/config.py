@@ -1,35 +1,26 @@
-import os
 from pathlib import Path
 
-# === Base Paths ===
-BASE_PATH = Path(__file__).parent.parent
+BASE_PATH = Path(__file__).resolve().parent.parent
 REFLECTIONS_FOLDER = BASE_PATH / "reflections"
-SEED_FILE = BASE_PATH / "seeds" / "thought_seeds.txt"
-META_FILE = BASE_PATH / "kai_session_meta.json"
-PROMPT_OUT = BASE_PATH / "live_prompt.txt"
-RESPONSE_IN = BASE_PATH / "live_response.txt"
+META_FILE = BASE_PATH / "kai_exchange_meta.json"
 
-# === OCR / UI Settings ===
-WAIT_BEFORE_CAPTURE = 6  # seconds to wait before capturing
-SCROLL_COUNT = 6         # how many scrolls per capture run
-MAX_REPEAT_COUNT = 3     # detect repeated frames
+WAIT_BEFORE_CAPTURE = 10
 
-# === UI Layouts ===
 UI_CONFIGS = {
-    "ChatGPT": {
-        "scroll_region": (111, 209, 896, 667),
-        "scroll_position": (525, 879),
-        "input_top_left": (147, 933),
-        "input_bottom_right": (846, 1028),
-        "send_button": (867, 1014),
-        "safe_click": (525, 879)
-    },
     "Solas": {
-        "scroll_region": (1191, 189, 1913, 891),
-        "scroll_position": (1526, 888),
-        "input_top_left": (1220, 945),
-        "input_bottom_right": (1800, 1028),
-        "send_button": (1829, 1015),
-        "safe_click": (1526, 888)
+        "input_top_left": (1230, 950),
+        "send_button": (1829, 1018),
+        "read_area_top_left": (1196, 240),
+        "read_area_bottom_right": (1884, 800),
+        "safe_click": ((1536, 936), (1536, 936)),
+        "scroll_region": (1196, 260, 1884, 750),
+    },
+    "ChatGPT": {
+        "input_top_left": (183, 958),
+        "send_button": (832, 1025),
+        "read_area_top_left": (150, 206),
+        "read_area_bottom_right": (873, 862),
+        "safe_click": ((410, 920), (410, 920)),
+        "scroll_region": (150, 206, 873, 862),
     }
 }

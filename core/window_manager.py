@@ -1,40 +1,23 @@
-# Desktop and window positioning logic
-import os
+# window_manager.py
+import pyautogui
 import time
-import pywinctl as gw
 import logging
-
-def switch_to_desktop_2():
-    """Switch to Desktop 2 using AppleScript."""
-    try:
-        os.system("""
-        osascript -e 'tell application "System Events"
-            key down control
-            key code 124
-            key up control
-        end tell'
-        """)
-        time.sleep(1.5)
-    except Exception as e:
-        logging.warning(f"❌ Desktop switch failed: {e}")
+from core.config import UI_CONFIGS
 
 def position_windows():
-    """Align ChatGPT and Solas windows side by side."""
-    try:
-        chatgpt_windows = gw.getWindowsWithTitle('ChatGPT')
-        solas_windows = gw.getWindowsWithTitle('Solas')
+    """Manually positions windows based on hardcoded screen areas."""
+    logging.info("✅ Assuming Solas and ChatGPT are already in place.")
+    import platform
+    if platform.system() == "Windows":
+        import pygetwindow as gw
+        logging.info("🪟 Listing all window titles:")
+        for w in gw.getAllWindows():
+            logging.info(f" - {w.title} ({w.width}x{w.height})")
+    else:
+        logging.info("⚠️ Window enumeration not supported on this OS.")
 
-        if not chatgpt_windows or not solas_windows:
-            raise RuntimeError("❌ Could not find both ChatGPT and Solas windows.")
-
-        kai = chatgpt_windows[0]
-        solas = solas_windows[0]
-
-        kai.moveTo(0, 0)
-        kai.resizeTo(960, 1080)
-        solas.moveTo(960, 0)
-        solas.resizeTo(960, 1080)
-
-        logging.info("✅ Windows positioned successfully.")
-    except Exception as e:
-        logging.warning(f"❌ Window layout failed: {e}")
+def switch_to_desktop_2():
+    """Simulate a Control + Right Arrow keypress to switch desktops."""
+    logging.info("🔄 Switching to Desktop 2...")
+    pyautogui.hotkey('ctrl', 'right')
+    time.sleep(1.5)
